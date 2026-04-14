@@ -1,0 +1,117 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0b0813;
+  --bg-panel:     #100d1c;
+  --bg-card:      #16122a;
+  --bg-input:     #0f0c1b;
+  --bg-hover:     #1c1733;
+
+  --purple:       #a855f7;
+  --purple-dim:   #7c3aed;
+  --purple-pale:  #c4b5fd;
+  --purple-bg:    rgba(168,85,247,0.08);
+  --purple-glow:  rgba(168,85,247,0.18);
+  --purple-border:rgba(168,85,247,0.22);
+
+  --gold:         #f59e0b;
+  --gold-bg:      rgba(245,158,11,0.08);
+  --gold-border:  rgba(245,158,11,0.28);
+
+  --rose:         #f43f5e;
+  --rose-bg:      rgba(244,63,94,0.08);
+  --rose-border:  rgba(244,63,94,0.28);
+  --rose-glow:    rgba(244,63,94,0.2);
+
+  --teal:         #2dd4bf;
+  --teal-bg:      rgba(45,212,191,0.06);
+
+  --text-1:       #f1eeff;
+  --text-2:       #8b7fa8;
+  --text-3:       #4a4262;
+  --text-mono:    #c4b5fd;
+
+  --border-1:     rgba(255,255,255,0.05);
+  --border-2:     rgba(255,255,255,0.09);
+  --border-3:     rgba(255,255,255,0.15);
+
+  --font-display: "Syne", sans-serif;
+  --font-body:    "Instrument Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-1);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168,85,247,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(124,58,237,0.06) 0%, transparent 50%);
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+/* range */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 3px;
+  border-radius: 2px; outline: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--purple);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 10px var(--purple-glow);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 18px var(--purple);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--purple); border: 2px solid var(--bg);
+}
+
+/* select */
+select {
+  font-family: var(--font-body);
+  background: var(--bg-input);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-sm);
+  color: var(--text-1);
+  padding: 7px 10px;
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: border-color .2s;
+}
+select:focus { border-color: var(--purple-dim); box-shadow: 0 0 0 3px var(--purple-bg); }
+
+button { font-family: var(--font-body); cursor: pointer; transition: all .15s; }
+button:active { transform: scale(0.98); }
+a { color: var(--purple-pale); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+@keyframes fadeUp   { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:.5} }
+@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes scanline { 0%{transform:translateY(-100%)} 100%{transform:translateY(400%)} }
+@keyframes spin     { to{transform:rotate(360deg)} }
